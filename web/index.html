@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Object 控制台</title>
+  <link rel="stylesheet" href="/styles.css?v=20261003-2">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Agent Object 控制台</h1>
+      <p id="status">正在连接 API...</p>
+    </div>
+    <button id="newConversation" class="primary">开启新对话</button>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>当前用户</h2>
+        <label for="userSelect">数据库记忆用户</label>
+        <select id="userSelect"></select>
+        <label for="customUser">自定义用户 ID</label>
+        <input id="customUser" placeholder="输入后点击应用">
+        <button id="applyUser">应用用户</button>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">
+          <h2>记忆管理</h2>
+          <label class="check">
+            <input type="checkbox" id="includeArchived">
+            显示归档
+          </label>
+        </div>
+        <div id="memoryList" class="memory-list"></div>
+      </section>
+    </aside>
+
+    <section class="chat-panel">
+      <div id="messages" class="messages"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="messageInput" placeholder="输入请求，例如：规划北京三日游" autocomplete="off">
+        <button class="primary" type="submit">发送</button>
+      </form>
+    </section>
+
+    <aside class="rightbar">
+      <section class="panel map-panel">
+        <h2>高德地图</h2>
+        <div id="mapFallback" class="map-fallback">
+          未配置 AMAP_JS_KEY。请在 .env 中填写后重启服务。
+        </div>
+        <div id="map" class="map"></div>
+        <form id="placeForm" class="place-form">
+          <input id="placeInput" placeholder="搜索地点">
+          <button type="submit">搜索</button>
+        </form>
+        <div id="placeResults" class="place-results"></div>
+      </section>
+
+      <section class="panel">
+        <h2>通用工具</h2>
+        <select id="toolSelect"></select>
+        <pre id="toolSchema" class="code"></pre>
+        <textarea id="toolArgs" rows="5">{}</textarea>
+        <button id="runTool">执行工具</button>
+        <pre id="toolResult" class="code"></pre>
+      </section>
+    </aside>
+  </main>
+
+  <script src="/app.js?v=20261003-2"></script>
+</body>
+</html>
